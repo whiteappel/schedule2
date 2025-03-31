@@ -1,7 +1,9 @@
 package com.example.schedule2.entitiy;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 //엔티티 선언
 @Entity
 //테이블 이름 선언
@@ -28,4 +30,15 @@ public class Member extends BaseEntity {
     private String password;
 
     private String email;
+
+    //엔티티가붙어있는 클래스는 기본 생성자가 필요함
+    public Member() {
+    }
+
+    //alt + insert로 생성하기
+    public Member(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }
