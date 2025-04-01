@@ -1,7 +1,9 @@
 package com.example.schedule2.entitiy;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 //엔티티 취금
 @Entity
 //테이블 생성
@@ -23,4 +25,13 @@ public class Board extends BaseEntity {
     @ManyToOne
     @JoinColumn(name= "member_id")
     private Member member;
+    //id는 자동생성에 member은 참조값이기 때문에 제목과 내용만
+    public Board(String contents, String title) {
+        this.contents = contents;
+        this.title = title;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }
