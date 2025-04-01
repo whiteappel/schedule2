@@ -36,9 +36,13 @@ public class Member extends BaseEntity {
     }
 
     //alt + insert로 생성하기
-    public Member(String username, String email, String password) {
+    public Member(String username, String password,String email) {
         this.username = username;
+        this.password = password;
         this.email = email;
+    }
+
+    public void updatePassword(String password) {
         this.password = password;
     }
 }
