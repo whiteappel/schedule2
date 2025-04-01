@@ -18,7 +18,10 @@ import java.util.Optional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    //생성
+
+
+
+    //유저 생성
     public SignUpResponseDto signUp(String username, String password, String email) {
 
         Member member = new Member(username, password, email);
@@ -27,7 +30,7 @@ public class MemberService {
 
         return new SignUpResponseDto(savedMember.getId(),savedMember.getUsername(),savedMember.getEmail());
     }
-    //조회
+    //유저 정보 조회
     public MemberResponseDto findById(Long id) {
         //옵셔널 쓰는이유 null을 안전하게 다루기 위함
         Optional<Member> optionalMember = memberRepository.findById(id);
@@ -43,7 +46,7 @@ public class MemberService {
         //유저네임 이메일 출력
         return new MemberResponseDto(findmember.getUsername(),findmember.getEmail());
     }
-    //수정
+    //유저 정보 수정
     @Transactional
     public void updatePassword(Long id, String oldPassword, String newPassword) {
 
@@ -55,5 +58,11 @@ public class MemberService {
         }
         //같다면 변경
         findMember.updatePassword(newPassword);
+    }
+    //유저 정보 삭제
+    public void delete(Long id) {
+        Member findMember = memberRepository.findByIdOrElseThrow(id);
+
+        memberRepository.delete(findMember);
     }
 }

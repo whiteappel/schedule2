@@ -4,6 +4,7 @@ import com.example.schedule2.dto.MemberResponseDto;
 import com.example.schedule2.dto.SignUpRequestDto;
 import com.example.schedule2.dto.SignUpResponseDto;
 import com.example.schedule2.dto.UpdatePasswordRequestDto;
+import com.example.schedule2.entitiy.Member;
 import com.example.schedule2.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,13 @@ public class MemberController {
     ){
 
         memberService.updatePassword(id,requestDto.getOldPassword(),requestDto.getNewPassword());
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    //삭제
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        memberService.delete(id);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
