@@ -1,6 +1,7 @@
 package com.example.schedule2.service;
 
 import com.example.schedule2.dto.BoardResponseDto;
+import com.example.schedule2.dto.BoardWithEmailResponseDto;
 import com.example.schedule2.entitiy.Board;
 import com.example.schedule2.entitiy.Member;
 import com.example.schedule2.repository.BoardRepository;
@@ -40,4 +41,13 @@ public class BoardService {
                 .map(BoardResponseDto::toDto)
                 .toList();
     }
+
+    public BoardWithEmailResponseDto findById(Long id) {
+
+        Board findBoard = boardRepository.findByIdOrElseThrow(id);
+        Member writer = findBoard.getMember();
+
+        return new BoardWithEmailResponseDto(findBoard.getTitle(), findBoard.getContents(), writer.getEmail());
+    }
+
 }

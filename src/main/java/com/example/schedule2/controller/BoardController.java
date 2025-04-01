@@ -1,7 +1,9 @@
 package com.example.schedule2.controller;
 
 import com.example.schedule2.dto.BoardResponseDto;
+import com.example.schedule2.dto.BoardWithEmailResponseDto;
 import com.example.schedule2.dto.CreateBoardRequestDto;
+import com.example.schedule2.entitiy.Board;
 import com.example.schedule2.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,12 +30,20 @@ public class BoardController {
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    //일정 조회
+    //일정 전체 조회
     @GetMapping
     public ResponseEntity<List<BoardResponseDto>> findAll(){
 
         List<BoardResponseDto> boardResponseDtoList = boardService.findAll();
 
         return new ResponseEntity<>(boardResponseDtoList,HttpStatus.OK);
+    }
+    //일정 일부 조회
+    @GetMapping("/{id}")
+    public ResponseEntity<BoardWithEmailResponseDto> findById(@PathVariable Long id){
+
+        BoardWithEmailResponseDto boardWithEmailResponseDto = boardService.findById(id);
+
+        return new ResponseEntity<>(boardWithEmailResponseDto,HttpStatus.OK);
     }
 }
