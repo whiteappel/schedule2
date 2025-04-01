@@ -50,4 +50,9 @@ public class BoardService {
         return new BoardWithEmailResponseDto(findBoard.getTitle(), findBoard.getContents(), writer.getEmail());
     }
 
+    public void delete(Long id) {
+        Board findBoard = boardRepository.findByIdOrElseThrow(id);
+
+        boardRepository.delete(findBoard);
+    }
 }

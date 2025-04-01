@@ -46,4 +46,11 @@ public class BoardController {
 
         return new ResponseEntity<>(boardWithEmailResponseDto,HttpStatus.OK);
     }
+    //일정 삭제
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        boardService.delete(id);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
