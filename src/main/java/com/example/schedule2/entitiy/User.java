@@ -1,5 +1,8 @@
 package com.example.schedule2.entitiy;
 
+import lombok.Getter;
+
+@Getter
 public class User {
     //식별자
     private Long id;

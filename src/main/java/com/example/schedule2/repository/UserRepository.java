@@ -1,9 +1,11 @@
 package com.example.schedule2.repository;
 
 import com.example.schedule2.dto.UserResponseDto;
+import com.example.schedule2.entitiy.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 @Repository

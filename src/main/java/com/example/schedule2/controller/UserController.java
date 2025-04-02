@@ -36,6 +36,8 @@ public class UserController {
         Cookie cookie = new Cookie("userId", String.valueOf(responseDto.getId()));
 
         // 쿠키에 값 세팅 (expire 시간을 주지 않으면 세션쿠키가 됨, 브라우저 종료시 로그아웃)
+        // expire은 종료를 의미 시간 부여는 금융 관련된 사이트
+        // 세션 쿠키는 블라우저를 닫을때 자동으로 삭제 해준다.
         // Response Set-Cookie: userId=1 형태로 전달된다.
         response.addCookie(cookie);
 
