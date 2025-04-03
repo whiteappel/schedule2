@@ -1,7 +1,9 @@
 package com.example.schedule2.entitiy;
 
+import jakarta.persistence.Table;
 import lombok.Getter;
-
+//멤버 테이블 과 연계
+@Table(name = "member")
 @Getter
 public class User {
     //식별자
@@ -22,4 +24,5 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
 }
