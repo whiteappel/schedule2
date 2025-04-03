@@ -2,6 +2,7 @@ package com.example.schedule2.entitiy;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 //엔티티 취금
@@ -9,6 +10,7 @@ import lombok.Getter;
 //테이블 생성
 @Table(name = "board")
 //수정일 생성일을 작성위한 extends
+@NoArgsConstructor
 public class Board extends BaseEntity {
 
     @Id

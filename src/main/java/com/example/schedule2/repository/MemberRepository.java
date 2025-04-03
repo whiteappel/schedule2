@@ -10,14 +10,14 @@ import java.util.Optional;
 //반환목적이기때문에 인터페이스
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    Optional<Member> findMemberByUsername(String username);
+    Optional<Member> findMemberByUserName(String userName);
 
-   default Member findMemberByUsernameOrElseThrow(String username){
-        return findMemberByUsername(username)
+   default Member findMemberByUsernameOrElseThrow(String userName){
+        return findMemberByUserName(userName)
                 .orElseThrow(() ->
                         new ResponseStatusException(
                                 HttpStatus.NOT_FOUND,
-                                "Does not exist username = " + username)
+                                "Does not exist username = " + userName)
                 );
    }
 

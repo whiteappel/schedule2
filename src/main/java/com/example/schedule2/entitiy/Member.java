@@ -23,8 +23,10 @@ public class Member extends BaseEntity {
 
  */
     //공백 불가 필수 , 유일 해야해서 유니크 추가로넣엇음
-    @Column(nullable = false, unique = true)
-    private String username;
+    //처음에 username으로 추가해서 userName으로 통일 시키는중
+    //또한 레포지토리와 서비스에 연관 문제있어서 다시 지정했습니다
+    @Column(name = "userName", nullable = false, unique = true)
+    private String userName;
 
     @Column(nullable = false)
     private String password;
@@ -36,8 +38,8 @@ public class Member extends BaseEntity {
     }
 
     //alt + insert로 생성하기
-    public Member(String username, String password,String email) {
-        this.username = username;
+    public Member(String userName, String password,String email) {
+        this.userName = userName;
         this.password = password;
         this.email = email;
     }
